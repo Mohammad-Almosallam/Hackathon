@@ -2,7 +2,6 @@ const { urlencoded } = require("body-parser");
 const express = require("express");
 const path = require("path");
 const dotenv = require("dotenv").config();
-
 const colors = require("colors");
 const mongoose = require("mongoose");
 const port = 3000;
@@ -19,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //here are the api's
 app.use("/api/users", require("./routers/userRouter"));
+app.use("/api/preferences", require("./routers/preferencesRouter"));
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 

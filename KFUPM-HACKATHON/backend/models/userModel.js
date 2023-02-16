@@ -11,16 +11,13 @@ const userSchema = mongoose.Schema(
       required: [true, "Please add an email"],
       unique: true,
     },
-    address: {
+    phoneNumber: {
       type: String,
-      required: [true, "Please add an address"],
+      required: [true, "Please add a phone number"],
     },
     password: {
       type: String,
       required: [true, "Please add a password"],
-    },
-    cards: {
-      type: Array,
     },
   },
   {

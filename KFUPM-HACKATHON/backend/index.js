@@ -4,6 +4,7 @@ const path = require("path");
 const dotenv = require("dotenv").config();
 const colors = require("colors");
 const mongoose = require("mongoose");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 const port = 3000;
 const { errorHandler } = require("./middleware/errorMiddleware");
 const connectDB = require("./config/db");

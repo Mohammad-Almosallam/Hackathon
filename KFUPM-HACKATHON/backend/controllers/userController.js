@@ -7,10 +7,10 @@ const User = require("../models/userModel");
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, address, password } = req.body;
+  const { name, email, password, phoneNumber } = req.body;
 
   //Checking inputs are all entered
-  if (!name || !email || !password || !address) {
+  if (!name || !email || !password || !phoneNumber) {
     res.status(400);
     throw new Error("Please add all fields");
   }
@@ -30,7 +30,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     name: name,
     email: email,
-    address: address,
+    phoneNumber: phoneNumber,
     password: hashedPassword,
   });
 
@@ -39,7 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user.id,
       name: user.name,
-      address: user.address,
+      phoneNumber: user.phoneNumber,
       email: user.email,
       token: generateToken(user._id),
     });
@@ -64,7 +64,7 @@ the user data. If it is not correct it will throw an error. */
     res.status(200).json({
       _id: user.id,
       name: user.name,
-      address: user.address,
+      phoneNumber: user.phoneNumber,
       email: user.email,
       token: generateToken(user._id),
     });
@@ -75,10 +75,10 @@ the user data. If it is not correct it will throw an error. */
 });
 
 const updateUser = asyncHandler(async (req, res) => {
-  const { name, email, address, password } = req.body;
+  const { name, email, phoneNumber, password } = req.body;
 
   //Checking inputs are all entered
-  if (!name || !email || !address || !password) {
+  if (!name || !email || !phoneNumber || !password) {
     res.status(400);
     throw new Error("Please add all fields");
   }
